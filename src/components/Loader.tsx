@@ -3,17 +3,17 @@ import { Bars } from "react-loader-spinner";
 
 const Loader = () => {
   return (
-    <>
+    <div>
       <Bars
-        height="80"
-        width="80"
-        color="#4fa94d"
+        height="30"
+        width="30"
+        color="#39cdcc"
         ariaLabel="bars-loading"
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
       />
-    </>
+    </div>
   );
 };
 
