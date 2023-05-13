@@ -8,7 +8,7 @@ import Socials from "./Socials";
 const GeneralDetails = ({ data }: any) => {
   return (
     <div>
-          <PersonalInfo data={data} />
+      <PersonalInfo data={data} />
       <Education education={data?.education} />
       <Socials socials={data?.socials} />
       <Guarantor guarantor={data?.guarantor} />

@@ -19,7 +19,7 @@ const Modal = ({ id }: any) => {
 
       <Link to="">
         <img src={active} alt="active" />
-        <span>ACtivate User</span>
+        <span>Activate User</span>
       </Link>
     </div>
   );
