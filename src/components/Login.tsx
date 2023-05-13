@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import auth from "../../firebaseConfig";
+import auth from "../firebaseConfig";
 import toast from "react-hot-toast";
-import Loader from "../Loader";
-import "./login.scss";
-import logo from "../../assets/logo.svg";
-import illustration from "../../assets/illustration.svg";
+import Loader from "./Loader";
+import "./styles/login.scss";
+import logo from "../assets/logo.svg";
+import illustration from "../assets/illustration.svg";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("guest@gmail.com");
@@ -14,15 +14,15 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const signin = await signInWithEmailAndPassword(auth, email, password);
       console.log(signin);
       toast.success("Login successful");
-      setLoading(false)
+      setLoading(false);
     } catch (error: any) {
       console.log(error);
       toast.error(error.message);
-      setLoading(false)
+      setLoading(false);
     }
   };
 

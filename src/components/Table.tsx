@@ -6,23 +6,20 @@ import Filter from "./Filter";
 
 const Table = () => {
   const [data, setData] = useState([]);
-  const OriginalData = data
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filter, setFilter] = useState({
     organization: "",
     phoneNumber: "",
     email: "",
-    name: "",
+    username: "",
     Date: "",
     status: "",
   });
   const itemsPerPage = 10; // Number of items to display per page
   const paginationRange = 2; // Number of page numbers to show on each side of the current page
 
-  useEffect(() => {
-    // Fetch data from API and set it to the 'data' state
-    const fetchData = async () => {
+      const fetchData = async () => {
       try {
         const response = await fetch(
           "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
@@ -34,6 +31,9 @@ const Table = () => {
         toast.error("Error fetching data");
       }
     };
+
+  useEffect(() => {
+    // Fetch data from API and set it to the 'data' state
 
     fetchData();
   }, []);
@@ -56,22 +56,24 @@ const Table = () => {
     setCurrentPage(1); // Reset to the first page when changing the filter
   };
 
+  console.log(filter)
+
   const filteredData = data.filter((item: itemProp) => {
     const isOrganizationMatch = filter.organization
       ? item.organization
-          .toLowerCase()
-          .includes(filter.organization.toLowerCase())
+          ?.toLowerCase()
+          ?.includes(filter.organization?.toLowerCase())
       : true;
     const isPhoneNumberMatch = filter.phoneNumber
       ? item.phoneNumber
-          .toLowerCase()
-          .includes(filter.phoneNumber.toLowerCase())
+          ?.toLowerCase()
+          ?.includes(filter.phoneNumber?.toLowerCase())
       : true;
     const isEmailMatch = filter.email
-      ? item.email.toLowerCase().includes(filter.email.toLowerCase())
+      ? item.email?.toLowerCase()?.includes(filter.email?.toLowerCase())
       : true;
-    const isNameMatch = filter.name
-      ? item.name.toLowerCase().includes(filter.name.toLowerCase())
+    const isNameMatch = filter.username
+      ? item.profile.firstName?.toLowerCase()?.includes(filter.username?.toLowerCase()) || item.profile.lastName ?.toLowerCase()?.includes(filter.username?.toLowerCase())
       : true;
 
     return (
@@ -79,18 +81,22 @@ const Table = () => {
     );
   });
 
+    
   const handleFilter = () => {
     setData(filteredData.slice(firstIndex, lastIndex));
     setShowFilter(false);
   };
 
   const handleReset = () => {
-    setData(OriginalData)
+    fetchData()
+    // setData(data)
     setShowFilter(false);
   };
 
   const lastIndex = currentPage * itemsPerPage;
-  const firstIndex = lastIndex - itemsPerPage;
+    const firstIndex = lastIndex - itemsPerPage;
+    const currentData = data.slice(firstIndex, lastIndex);
+    
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startPage = Math.max(1, currentPage - paginationRange);
@@ -108,7 +114,7 @@ const Table = () => {
         <Filter
           data={data}
           filter={filter}
-          onChange={handleFilterChange}
+          handleFilterChange={handleFilterChange}
           handleFilter={handleFilter}
           handleReset={handleReset}
         />
@@ -145,13 +151,19 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item: any, index) => (
+          {currentData.map((item: any, index) => (
             <tr key={index}>
               <td>{item.orgName}</td>
               <td>{item.profile.firstName + " " + item.profile.lastName}</td>
               <td>{item.email}</td>
               <td>{item.profile.phoneNumber}</td>
-              <td>{item.createdAt}</td>
+              {/* <td>
+                {Intl.DateTimeFormat("en", {
+                  year: "numeric",
+                  day: "2-digit",
+                  month: "long",
+                }).format(item.createdAt)}
+              </td> */}
               <td>{item.employmentStatus}</td>
               <td>{<img src={more} alt="options" />}</td>
             </tr>
