@@ -3,18 +3,10 @@ import { Link } from "react-router-dom";
 import view from "../assets/view.svg";
 import blacklist from "../assets/blacklist.svg";
 import active from "../assets/active.svg";
-import { positionProp } from "../types";
 
-const Modal = ({ position, id }: positionProp) => {
-  console.log(position);
+const Modal = ({ id }: any) => {
   return (
-    <div
-      style={{
-        marginTop: position.top + "px",
-        marginLeft: position.left + "px",
-        position: "absolute",
-      }}
-    >
+    <div>
       <Link to={`/user/${id}`}>
         <img src={view} alt="view" />
         <span>View</span>

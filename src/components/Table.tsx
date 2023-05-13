@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { itemProp } from "../types";
 import more from "../assets/more.svg";
@@ -11,7 +11,6 @@ const Table = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
   const [filter, setFilter] = useState({
     organization: "",
@@ -21,9 +20,8 @@ const Table = () => {
     Date: "",
     status: "",
   });
-  const itemsPerPage = 10; // Number of items to display per page
-  const paginationRange = 2; // Number of page numbers to show on each side of the current page
-  const buttonRefs: any = useRef([]);
+  const itemsPerPage = 10;
+  const paginationRange = 2;
 
   const fetchData = async () => {
     try {
@@ -61,14 +59,6 @@ const Table = () => {
       [name]: value,
     }));
     setCurrentPage(1); // Reset to the first page when changing the filter
-  };
-
-  const handleModal = (buttonRef: any) => {
-    setShowModal(!showModal);
-    if (buttonRef && buttonRef.current) {
-      const buttonRect = buttonRef.current.getBoundingClientRect();
-      setModalPosition({ top: buttonRect.top, left: buttonRect.left });
-    }
   };
 
   console.log(filter);
@@ -185,14 +175,12 @@ const Table = () => {
                     hour12: true,
                   }).format(new Date(item.createdAt))}
               </td>
-              <td>{item.employmentStatus}</td>
+              <td>{item?.education?.employmentStatus}</td>
               <td>
                 {
                   <img
                     src={more}
                     alt="options"
-                    ref={(ref) => (buttonRefs.current[index] = ref)}
-                    // onClick={(ref) => handleModal(ref)} />}
                     onClick={() => {
                       setUserId(item?.id);
                       setShowModal(!showModal);
@@ -200,9 +188,10 @@ const Table = () => {
                   />
                 }
               </td>
+              {userId === item?.id ? <Modal id={userId} /> : null}
             </tr>
           ))}
-          {showModal && <Modal position={modalPosition} id={userId} />}
+          
         </tbody>
       </table>
 

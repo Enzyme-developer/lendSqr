@@ -1,4 +1,3 @@
-import React from "react";
 import { socialProp } from "../types";
 import Info from "./Info";
 
