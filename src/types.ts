@@ -19,5 +19,25 @@ export type itemProp = {
   organization: string;
   phoneNumber: string;
   email: string;
-  name: string
-}
+  profile: {
+    firstName: string;
+    lastName: string;
+  };
+};
+
+export type positionProp = {
+  position: {
+    top: number;
+    left: number;
+  };
+  id: string;
+};
+
+
+export type socialProp = {
+  socials: {
+    twitter: string;
+    facebook: string;
+    instagram?: string;
+  };
+};

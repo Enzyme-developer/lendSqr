@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { itemProp } from "../types";
 import more from "../assets/more.svg";
 import Filter from "./Filter";
+import Modal from "./Modal";
 
 const Table = () => {
   const [data, setData] = useState([]);
+  const [userId, setUserId] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showFilter, setShowFilter] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+
   const [filter, setFilter] = useState({
     organization: "",
     phoneNumber: "",
@@ -18,19 +23,21 @@ const Table = () => {
   });
   const itemsPerPage = 10; // Number of items to display per page
   const paginationRange = 2; // Number of page numbers to show on each side of the current page
+  const buttonRefs: any = useRef([]);
 
-      const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
-        );
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error("Error:", error);
-        toast.error("Error fetching data");
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
+      );
+      const jsonData = await response.json();
+      setData(jsonData);
+      console.log(jsonData);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Error fetching data");
+    }
+  };
 
   useEffect(() => {
     // Fetch data from API and set it to the 'data' state
@@ -56,7 +63,15 @@ const Table = () => {
     setCurrentPage(1); // Reset to the first page when changing the filter
   };
 
-  console.log(filter)
+  const handleModal = (buttonRef: any) => {
+    setShowModal(!showModal);
+    if (buttonRef && buttonRef.current) {
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      setModalPosition({ top: buttonRect.top, left: buttonRect.left });
+    }
+  };
+
+  console.log(filter);
 
   const filteredData = data.filter((item: itemProp) => {
     const isOrganizationMatch = filter.organization
@@ -73,7 +88,9 @@ const Table = () => {
       ? item.email?.toLowerCase()?.includes(filter.email?.toLowerCase())
       : true;
     const isNameMatch = filter.username
-      ? item.profile.firstName?.toLowerCase()?.includes(filter.username?.toLowerCase()) || item.profile.lastName ?.toLowerCase()?.includes(filter.username?.toLowerCase())
+      ? item.profile.firstName
+          ?.toLowerCase()
+          ?.includes(filter.username?.toLowerCase())
       : true;
 
     return (
@@ -81,22 +98,20 @@ const Table = () => {
     );
   });
 
-    
   const handleFilter = () => {
     setData(filteredData.slice(firstIndex, lastIndex));
     setShowFilter(false);
   };
 
   const handleReset = () => {
-    fetchData()
+    fetchData();
     // setData(data)
     setShowFilter(false);
   };
 
   const lastIndex = currentPage * itemsPerPage;
-    const firstIndex = lastIndex - itemsPerPage;
-    const currentData = data.slice(firstIndex, lastIndex);
-    
+  const firstIndex = lastIndex - itemsPerPage;
+  const currentData = data.slice(firstIndex, lastIndex);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startPage = Math.max(1, currentPage - paginationRange);
@@ -120,7 +135,7 @@ const Table = () => {
         />
       )}
 
-      <table>
+      <table style={{ position: "relative" }}>
         {/* Table structure */}
         <thead>
           <tr>
@@ -157,17 +172,37 @@ const Table = () => {
               <td>{item.profile.firstName + " " + item.profile.lastName}</td>
               <td>{item.email}</td>
               <td>{item.profile.phoneNumber}</td>
-              {/* <td>
+              <td>
                 {Intl.DateTimeFormat("en", {
                   year: "numeric",
                   day: "2-digit",
                   month: "long",
-                }).format(item.createdAt)}
-              </td> */}
+                }).format(new Date(item.createdAt)) +
+                  " " +
+                  Intl.DateTimeFormat("en", {
+                    hour: "numeric",
+                    minute: "numeric",
+                    hour12: true,
+                  }).format(new Date(item.createdAt))}
+              </td>
               <td>{item.employmentStatus}</td>
-              <td>{<img src={more} alt="options" />}</td>
+              <td>
+                {
+                  <img
+                    src={more}
+                    alt="options"
+                    ref={(ref) => (buttonRefs.current[index] = ref)}
+                    // onClick={(ref) => handleModal(ref)} />}
+                    onClick={() => {
+                      setUserId(item?.id);
+                      setShowModal(!showModal);
+                    }}
+                  />
+                }
+              </td>
             </tr>
           ))}
+          {showModal && <Modal position={modalPosition} id={userId} />}
         </tbody>
       </table>
 
