@@ -1,20 +1,35 @@
 @mixin reusable-input {
-    width: 100%;
-    max-width: 100%;
-    height: 50px;
-    color: #545f7d;
-    opacity: 0.6;
-    border-radius: 5px;
-    padding-left: 1rem;
-    font-weight: 400;
-    font-size: 14px;
-    outline-color: transparent;
-  }
+  width: 100%;
+  max-width: 100%;
+  height: 50px;
+  color: #545f7d;
+  opacity: 0.6;
+  border-radius: 5px;
+  padding-left: 1rem;
+  font-weight: 400;
+  font-size: 14px;
+  outline-color: transparent;
+  box-sizing: border-box;
+}
 
-  @mixin reusable-button {
-    color: white;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-  }
-  
+@mixin reusable-button {
+  color: white;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin reusable-filter {
+  background: #ffffff;
+  outline-color: transparent;
+  height: 40px;
+  border: 1px solid rgba(33, 63, 125, 0.2);
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: $primary-color;
+  padding: 0 20px;
+  margin-bottom: 15px;
+}

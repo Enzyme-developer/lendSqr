@@ -21,15 +21,18 @@ import report from "../assets/report.svg";
 import preferences from "../assets/preferences.svg";
 import feesAndPricing from "../assets/feesAndPricing.svg";
 import audit from "../assets/audit.svg";
-import caret from "../assets/caret.svg";
 import "./styles/sidebar.scss";
 
 const Sidebar = () => {
   const [nav, setNav] = useState(false);
-  const dynamicStyles:any = `{backgroundColor: ${nav? 'yellow' : ''}`;
+  // const dynamicStyles: any = `{backgroundColor: ${nav ? "yellow" : ""}`;
   return (
     <main>
-      <aside>
+      <div className="toggle" onClick={() => setNav(!nav)}>
+        <img src={dropdown} alt="toggle" />
+      </div>
+
+      <aside className={`aside ${nav? 'aside-hidden' : 'aside-display'}`}>
         <div className="switch">
           <img src={dropdown} className="switch__child" alt="dropdown" />
           <p className="switch__child">Switch Organization</p>
@@ -72,10 +75,6 @@ const Sidebar = () => {
           <SideBarItem title="Audit Logs" imgSrc={audit} />
         </div>
       </aside>
-
-      <div className="toggle" onClick={() => setNav(!nav)}>
-        <img src={dropdown} alt="toggle" />
-      </div>
     </main>
   );
 };

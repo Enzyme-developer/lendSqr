@@ -4,6 +4,10 @@ import { itemProp } from "../types";
 import more from "../assets/more.svg";
 import Filter from "./Filter";
 import Modal from "./Modal";
+import filterImage from "../assets/filter.svg";
+import next from "../assets/next.svg";
+import prev from "../assets/prev.svg";
+import "./styles/table.scss";
 
 const Table = () => {
   const [data, setData] = useState([]);
@@ -38,9 +42,7 @@ const Table = () => {
   };
 
   useEffect(() => {
-    // Fetch data from API and set it to the 'data' state
-
-    // fetchData();
+    fetchData();
   }, []);
 
   const handlePageChange = (pageNumber: number) => {
@@ -113,7 +115,7 @@ const Table = () => {
   }
 
   return (
-    <div>
+    <div className="table__main">
       {/* Filter component */}
       {showFilter && (
         <Filter
@@ -130,34 +132,64 @@ const Table = () => {
         <thead>
           <tr>
             <th>
-              <span>Organization</span>
-              <span onClick={() => setShowFilter(!showFilter)}>Filter</span>
+              <div
+                className="flexspan"
+                onClick={() => setShowFilter(!showFilter)}
+              >
+                <p>Organization</p>
+                <img src={filterImage} alt="filter" />
+              </div>
             </th>
             <th>
-              <span>Name</span>
-              <span onClick={() => setShowFilter(!showFilter)}>Filter</span>
+              <div
+                className="flexspan"
+                onClick={() => setShowFilter(!showFilter)}
+              >
+                <p>Name</p>
+                <img src={filterImage} alt="filter" />
+              </div>
             </th>
             <th>
-              <span>Email</span>
-              <span onClick={() => setShowFilter(!showFilter)}>Filter</span>
+              <div
+                className="flexspan"
+                onClick={() => setShowFilter(!showFilter)}
+              >
+                <p>Email</p>
+                <img src={filterImage} alt="filter" />
+              </div>
             </th>
             <th>
-              <span>Phone number</span>
-              <span onClick={() => setShowFilter(!showFilter)}>Filter</span>
+              <div
+                className="flexspan"
+                onClick={() => setShowFilter(!showFilter)}
+              >
+                <p>Phone Number</p>
+                <img src={filterImage} alt="filter" />
+              </div>
             </th>
             <th>
-              <span>Date Joined</span>
-              <span onClick={() => setShowFilter(!showFilter)}>Filter</span>
+              <div
+                className="flexspan"
+                onClick={() => setShowFilter(!showFilter)}
+              >
+                <p>Date Joined</p>
+                <img src={filterImage} alt="filter" />
+              </div>
             </th>
             <th>
-              <span>Status</span>
-              <span onClick={() => setShowFilter(!showFilter)}>Filter</span>
+              <div
+                className="flexspan"
+                onClick={() => setShowFilter(!showFilter)}
+              >
+                <p>Status</p>
+                <img src={filterImage} alt="filter" />
+              </div>
             </th>
           </tr>
         </thead>
         <tbody>
           {currentData.map((item: any, index) => (
-            <tr key={index}>
+            <tr key={index} className="row">
               <td>{item.orgName}</td>
               <td>{item.profile.firstName + " " + item.profile.lastName}</td>
               <td>{item.email}</td>
@@ -191,24 +223,23 @@ const Table = () => {
               {userId === item?.id ? <Modal id={userId} /> : null}
             </tr>
           ))}
-          
         </tbody>
       </table>
 
       {/* Pagination control */}
-      <div>
+      <div className='pagination'>
         <div className="showing">
-          <p>shwing {lastIndex} of 100</p>
+          <p>showing {lastIndex} of 100</p>
         </div>
 
         {filteredData.length > itemsPerPage && (
-          <ul className="pagination">
+          <ul className="page">
             {/* Previous page button */}
             <li
               className={currentPage === 1 ? "disabled" : ""}
               onClick={() => handlePageChange(currentPage - 1)}
             >
-              Previous
+              <img src={prev} alt='prev' />
             </li>
 
             {/* Page numbers */}
@@ -229,7 +260,7 @@ const Table = () => {
               className={currentPage === totalPages ? "disabled" : ""}
               onClick={() => handlePageChange(currentPage + 1)}
             >
-              Next
+              <img src={next} alt='next' />
             </li>
           </ul>
         )}

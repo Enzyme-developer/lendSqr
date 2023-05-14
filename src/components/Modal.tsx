@@ -3,24 +3,25 @@ import { Link } from "react-router-dom";
 import view from "../assets/view.svg";
 import blacklist from "../assets/blacklist.svg";
 import active from "../assets/active.svg";
+import './styles/modal.scss'
 
 const Modal = ({ id }: any) => {
   return (
-    <div>
-      <Link to={`/user/${id}`}>
+    <div className='modal'>
+      <Link className='link' to={`/user/${id}`}>
         <img src={view} alt="view" />
-        <span>View</span>
+        <p>View</p>
       </Link>
 
-      <Link to="">
+      <div className='link'>
         <img src={blacklist} alt="blacklist" />
-        <span>Blacklist User</span>
-      </Link>
+        <p>Blacklist User</p>
+      </div>
 
-      <Link to="">
+      <div className='link'>
         <img src={active} alt="active" />
-        <span>Activate User</span>
-      </Link>
+        <p>Activate User</p>
+      </div>
     </div>
   );
 };
