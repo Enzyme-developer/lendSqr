@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SideBarItem from "./SideBarItem";
 import dropdown from "../assets/dropdown.svg";
 import home from "../assets/home.svg";
@@ -21,48 +21,62 @@ import report from "../assets/report.svg";
 import preferences from "../assets/preferences.svg";
 import feesAndPricing from "../assets/feesAndPricing.svg";
 import audit from "../assets/audit.svg";
+import caret from "../assets/caret.svg";
+import "./styles/sidebar.scss";
 
 const Sidebar = () => {
+  const [nav, setNav] = useState(false);
+  const dynamicStyles:any = `{backgroundColor: ${nav? 'yellow' : ''}`;
   return (
-    <aside>
-      <div className="switch">
-        <img src={dropdown} alt="dropdown" />
-        <p>Switch Organization</p>
-        <SideBarItem title="dashboard" imgSrc={home} />
+    <main>
+      <aside>
+        <div className="switch">
+          <img src={dropdown} className="switch__child" alt="dropdown" />
+          <p className="switch__child">Switch Organization</p>
+          <img className="switch__child" src={dropdown} alt="dropdown" />
+        </div>
+
+        <div className="dashboard">
+          <SideBarItem title="Dashboard" imgSrc={home} />
+        </div>
+
+        <div className="category">
+          <p className="heading">CUSTOMERS</p>
+          <SideBarItem title="Users" imgSrc={users} className={true} />
+          <SideBarItem title="Guarantors" imgSrc={guarantors} />
+          <SideBarItem title="Loans" imgSrc={loan} />
+          <SideBarItem title="Decision models" imgSrc={decisionModel} />
+          <SideBarItem title="Savings" imgSrc={savings} />
+          <SideBarItem title="Loan Requests" imgSrc={loanRequest} />
+          <SideBarItem title="Whitelist" imgSrc={whitelist} />
+          <SideBarItem title="Karma" imgSrc={karma} />
+        </div>
+
+        <div className="category">
+          <p className="heading">BUSINESSES</p>
+          <SideBarItem title="Organization" imgSrc={organization} />
+          <SideBarItem title="Loan Products" imgSrc={loan} />
+          <SideBarItem title="Saving Products" imgSrc={savingsProduct} />
+          <SideBarItem title="Fees And Charges" imgSrc={fees} />
+          <SideBarItem title="Transactions" imgSrc={transaction} />
+          <SideBarItem title="Services" imgSrc={service} />
+          <SideBarItem title="Service Accounts" imgSrc={serviceAccount} />
+          <SideBarItem title="Settlements" imgSrc={settlement} />
+          <SideBarItem title="Reports" imgSrc={report} />
+        </div>
+
+        <div className="category">
+          <p className="heading">SETTINGS</p>
+          <SideBarItem title="Preferences" imgSrc={preferences} />
+          <SideBarItem title="fees And Pricing" imgSrc={feesAndPricing} />
+          <SideBarItem title="Audit Logs" imgSrc={audit} />
+        </div>
+      </aside>
+
+      <div className="toggle" onClick={() => setNav(!nav)}>
+        <img src={dropdown} alt="toggle" />
       </div>
-
-      <ul className="category">
-        <p>CUSTOMERS</p>
-        <SideBarItem title="Users" imgSrc={users} />
-        <SideBarItem title="Guarantors" imgSrc={guarantors} />
-        <SideBarItem title="Loans" imgSrc={loan} />
-        <SideBarItem title="Decision models" imgSrc={decisionModel} />
-        <SideBarItem title="Savings" imgSrc={savings} />
-        <SideBarItem title="Loan Requests" imgSrc={loanRequest} />
-        <SideBarItem title="Whitelist" imgSrc={whitelist} />
-        <SideBarItem title="Karma" imgSrc={karma} />
-      </ul>
-
-      <ul className="category">
-        <p>BUSINESSES</p>
-        <SideBarItem title="Organization" imgSrc={organization} />
-        <SideBarItem title="Loan Products" imgSrc={loan} />
-        <SideBarItem title="Saving Products" imgSrc={savingsProduct} />
-        <SideBarItem title="Fees And Charges" imgSrc={fees} />
-        <SideBarItem title="Transactions" imgSrc={transaction} />
-        <SideBarItem title="Services" imgSrc={service} />
-        <SideBarItem title="Service Accounts" imgSrc={serviceAccount} />
-        <SideBarItem title="Settlements" imgSrc={settlement} />
-        <SideBarItem title="Reports" imgSrc={report} />
-      </ul>
-
-      <ul className="category">
-        <p>SETTINGS</p>
-        <SideBarItem title="Preferences" imgSrc={preferences} />
-        <SideBarItem title="fees And Pricing" imgSrc={feesAndPricing} />
-        <SideBarItem title="Audit Logs" imgSrc={audit} />
-      </ul>
-    </aside>
+    </main>
   );
 };
 

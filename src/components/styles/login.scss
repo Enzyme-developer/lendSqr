@@ -1,4 +1,5 @@
 @import "./mixins";
+@import "./variables";
 
 .login {
   width: 100%;
@@ -48,7 +49,7 @@
   p {
     font-size: 20px;
     font-weight: 400;
-    color: #545f7d;
+    color: $primary-color;
     margin-bottom: 60px;
   }
 
@@ -59,7 +60,7 @@
   .email {
     @include reusable-input;
     margin-bottom: 24px;
-    border: 2px solid #545f7d;
+    border: 2px solid $primary-color;
   }
   .group-input {
     @include reusable-input;
@@ -67,11 +68,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
-    border: 2px solid #545f7d;
+    border: 2px solid $primary-color;
     span {
       margin-right: 16px;
       font-size: 12px;
-      color: #39cdcc;
+      color: $secondary-color;
       font-weight: 600;
       cursor: pointer;
     }
@@ -84,13 +85,13 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
-    color: #39cdcc;
+    color: $secondary-color;
   }
   button {
     @include reusable-button;
     margin-top: 30px;
     height: 48px;
-    background: #39cdcc;
+    background: $secondary-color;
     border-radius: 8px;
     letter-spacing: 0.1em;
     width: 100%;

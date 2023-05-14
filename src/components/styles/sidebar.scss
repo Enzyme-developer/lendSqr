@@ -1,0 +1,45 @@
+@import "./variables";
+aside {
+  background: #ffffff;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  width: 283px;
+  padding-left: 30px;
+  padding-top: 40px;
+  .toggle{
+    display: flex;
+  }
+  .switch {
+    display: flex;
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      color: $tertiary-color;
+    }
+    .switch__child {
+      margin-right: 10px;
+    }
+    .switch__child:last-child {
+      margin-right: 0;
+    }
+  }
+  .dashboard {
+    margin: 40px 0;
+  }
+
+  .category {
+    .heading {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      color: $primary-color;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+    .toggle{
+        display:flex
+    }
+}

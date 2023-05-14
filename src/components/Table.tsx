@@ -40,7 +40,7 @@ const Table = () => {
   useEffect(() => {
     // Fetch data from API and set it to the 'data' state
 
-    fetchData();
+    // fetchData();
   }, []);
 
   const handlePageChange = (pageNumber: number) => {

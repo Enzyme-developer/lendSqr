@@ -7,6 +7,7 @@ export type Props = { children: React.ReactNode };
 export type sidebarItemProps = {
   title: string;
   imgSrc: string;
+  className?: any;
 };
 
 export type cardProps = {

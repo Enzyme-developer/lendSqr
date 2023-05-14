@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './styles/navbar.scss'
 import logo from "../assets/logo.svg";
 import searchIcon from "../assets/searchIcon.svg";
 import bellIcon from "../assets/bellIcon.svg";
@@ -8,7 +9,7 @@ import caret from "../assets/caret.svg";
 const Navbar = () => {
   const [search, setSearch] = useState<string>("");
   return (
-    <header>
+    <nav>
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
@@ -18,6 +19,7 @@ const Navbar = () => {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          placeholder='search for anything'
         />
         <button>
           <img src={searchIcon} alt="search" />
@@ -25,13 +27,16 @@ const Navbar = () => {
       </div>
 
       <div className="user">
-        <a href="#">Docs</a>
-        <img src={bellIcon} alt="bell icon" />
-        <img src={avatar} alt="avatar" />
+        <a href="#"className='user__child' >Docs</a>
+        <img className='user__child' src={bellIcon} alt="bell icon" />
+        <img className='user__child' src={avatar} alt="avatar" />
+        <div className="username user__child">
         <p>Adedeji</p>
         <img src={caret} alt="caret" />
+        </div>
+
       </div>
-    </header>
+    </nav>
   );
 };
 

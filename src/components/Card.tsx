@@ -1,5 +1,6 @@
 import React from "react";
 import { cardProps } from "../types";
+import './styles/card.scss'
 
 const Card = ({ img, title, value }: cardProps) => {
   return (

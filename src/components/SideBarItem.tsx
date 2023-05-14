@@ -1,12 +1,12 @@
-import React from "react";
 import { sidebarItemProps } from "../types";
+import './styles/siderbarItem.scss'
 
-const SideBarItem = ({ imgSrc, title }: sidebarItemProps) => {
+const SideBarItem = ({ imgSrc, title, className }: sidebarItemProps) => {
   return (
-    <li>
+    <span className={className? 'active-bar': ''}>
       <img src={imgSrc} alt="icon" />
       <p>{title}</p>
-    </li>
+    </span>
   );
 };
 
