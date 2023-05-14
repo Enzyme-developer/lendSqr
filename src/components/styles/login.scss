@@ -1,36 +1,42 @@
+@import "./mixins";
+
 .login {
-  display: flex;
-//   flex-wrap:wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 }
 
 .login__left {
-    background-color: #39cdcc;
   display: flex;
   flex: 1;
+  max-width: 100%;
   flex-direction: column;
   .logo {
     width: 173.97px;
     height: 36px;
-    margin-left: 79px;
-    margin-top: 106px;
+    margin-left: calc((79% / 16));
+    margin-top: calc((106% / 16));
   }
   .illustration {
     width: 600px;
     max-width: 100%;
     height: 337.57px;
-    margin-left: 69px;
-    margin-right: 69px;
-    margin-top: 148.33px;
+    margin-left: calc((69% / 16));
+    margin-right: calc((69% / 16));
+    margin-top: calc((148.3% / 16));
   }
 }
 
 .login__right {
   display: flex;
-  flex-direction: column;
   flex: 1;
-  padding-left: 100px;
-  padding-right: 157px;
-  padding-bottom: 285px;
+  max-width: 100%;
+  flex-direction: column;
+  padding-left: calc((100% / 16));
+  padding-right: calc((157% / 16));
+  padding-bottom: calc((285% / 16));
   box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
   h1 {
     font-size: 40px;
@@ -45,19 +51,34 @@
     color: #545f7d;
     margin-bottom: 60px;
   }
-  input {
+
+  form {
     max-width: 100%;
-    width: 80%;
-    height: 50px;
-    // border: 2px solid rgba(84, 95, 125, 0.15);
-    border: 2px solid #545f7d;
-    color: #545f7d;
-    opacity: 0.6;
+  }
+
+  .email {
+    @include reusable-input;
     margin-bottom: 24px;
-    border-radius: 5px;
-    padding-left: 1rem;
-    font-weight: 400;
-    font-size: 14px;
+    border: 2px solid #545f7d;
+  }
+  .group-input {
+    @include reusable-input;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border: 2px solid #545f7d;
+    span {
+      margin-right: 16px;
+      font-size: 12px;
+      color: #39cdcc;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+  .password {
+    height: 40px;
+    border: none;
   }
   .login__right__forgot {
     font-size: 12px;
@@ -66,21 +87,25 @@
     color: #39cdcc;
   }
   button {
-    color: white;
-    text-align: center;
-    border: none;
+    @include reusable-button;
     margin-top: 30px;
-    width: 447px;
     height: 48px;
     background: #39cdcc;
     border-radius: 8px;
     letter-spacing: 0.1em;
-    cursor: pointer;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .login {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+  .login__right h1 {
+    margin-top: 5%;
   }
 }

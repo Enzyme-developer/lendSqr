@@ -6,18 +6,24 @@ import Loader from "./Loader";
 import "./styles/login.scss";
 import logo from "../assets/logo.svg";
 import illustration from "../assets/illustration.svg";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login: React.FC = ({ login }: any) => {
   const [email, setEmail] = useState<string>("guest@gmail.com");
   const [password, setPassword] = useState<string>("123456");
   const [loading, setLoading] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleLogin = async () => {
+  const navigate = useNavigate()
+
+  const handleLogin = async (e: { preventDefault: () => void }) => {
     try {
+      e.preventDefault();
       setLoading(true);
       const signin = await signInWithEmailAndPassword(auth, email, password);
       console.log(signin);
       toast.success("Login successful");
+      navigate('/')
       setLoading(false);
     } catch (error: any) {
       console.log(error);
@@ -36,18 +42,31 @@ const Login = () => {
       <div className="login__right">
         <h1>Welcome!</h1>
         <p>Enter details to login.</p>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <div className="login__right__forgot">FORGOT PASSWORD ?</div>
-        <button onClick={handleLogin}>LOG IN</button>
+
+        <form onSubmit={handleLogin}>
+          <input
+            name="email"
+            type="text"
+            className="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-labelledby="email-label"
+          />
+          <div className="group-input">
+            <input
+              name="password"
+              type={showPassword ? "text" : "password"}
+              className="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              aria-labelledby="password-label"
+            />
+            <span onClick={() => setShowPassword(!showPassword)}>SHOW</span>
+          </div>
+
+          <div className="login__right__forgot">FORGOT PASSWORD ?</div>
+          <button type="submit">LOG IN</button>
+        </form>
 
         {loading && (
           <div

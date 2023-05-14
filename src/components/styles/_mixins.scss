@@ -1,0 +1,19 @@
+@mixin reusable-input {
+    width: 100%;
+    max-width: 100%;
+    height: 50px;
+    color: #545f7d;
+    opacity: 0.6;
+    border-radius: 5px;
+    padding-left: 1rem;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  @mixin reusable-button {
+    color: white;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+  
