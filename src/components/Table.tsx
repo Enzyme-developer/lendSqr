@@ -115,155 +115,189 @@ const Table = () => {
   }
 
   return (
-    <div className="table__main">
-      {/* Filter component */}
-      {showFilter && (
-        <Filter
-          data={data}
-          filter={filter}
-          handleFilterChange={handleFilterChange}
-          handleFilter={handleFilter}
-          handleReset={handleReset}
-        />
-      )}
-
-      <table style={{ position: "relative" }}>
-        {/* Table structure */}
-        <thead>
-          <tr>
-            <th>
-              <div
-                className="flexspan"
-                onClick={() => setShowFilter(!showFilter)}
-              >
-                <p>Organization</p>
-                <img src={filterImage} alt="filter" />
-              </div>
-            </th>
-            <th>
-              <div
-                className="flexspan"
-                onClick={() => setShowFilter(!showFilter)}
-              >
-                <p>Name</p>
-                <img src={filterImage} alt="filter" />
-              </div>
-            </th>
-            <th>
-              <div
-                className="flexspan"
-                onClick={() => setShowFilter(!showFilter)}
-              >
-                <p>Email</p>
-                <img src={filterImage} alt="filter" />
-              </div>
-            </th>
-            <th>
-              <div
-                className="flexspan"
-                onClick={() => setShowFilter(!showFilter)}
-              >
-                <p>Phone Number</p>
-                <img src={filterImage} alt="filter" />
-              </div>
-            </th>
-            <th>
-              <div
-                className="flexspan"
-                onClick={() => setShowFilter(!showFilter)}
-              >
-                <p>Date Joined</p>
-                <img src={filterImage} alt="filter" />
-              </div>
-            </th>
-            <th>
-              <div
-                className="flexspan"
-                onClick={() => setShowFilter(!showFilter)}
-              >
-                <p>Status</p>
-                <img src={filterImage} alt="filter" />
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentData.map((item: any, index) => (
-            <tr key={index} className="row">
-              <td>{item.orgName}</td>
-              <td>{item.profile.firstName + " " + item.profile.lastName}</td>
-              <td>{item.email}</td>
-              <td>{item.profile.phoneNumber}</td>
-              <td>
-                {Intl.DateTimeFormat("en", {
-                  year: "numeric",
-                  day: "2-digit",
-                  month: "long",
-                }).format(new Date(item.createdAt)) +
-                  " " +
-                  Intl.DateTimeFormat("en", {
-                    hour: "numeric",
-                    minute: "numeric",
-                    hour12: true,
-                  }).format(new Date(item.createdAt))}
-              </td>
-              <td>{item?.education?.employmentStatus}</td>
-              <td>
-                {
-                  <img
-                    src={more}
-                    alt="options"
-                    onClick={() => {
-                      setUserId(item?.id);
-                      setShowModal(!showModal);
-                    }}
-                  />
-                }
-              </td>
-              {userId === item?.id ? <Modal id={userId} /> : null}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Pagination control */}
-      <div className='pagination'>
-        <div className="showing">
-          <p>showing {lastIndex} of 100</p>
-        </div>
-
-        {filteredData.length > itemsPerPage && (
-          <ul className="page">
-            {/* Previous page button */}
-            <li
-              className={currentPage === 1 ? "disabled" : ""}
-              onClick={() => handlePageChange(currentPage - 1)}
-            >
-              <img src={prev} alt='prev' />
-            </li>
-
-            {/* Page numbers */}
-            {startPage > 1 && <li>...</li>}
-            {pageNumbers.map((pageNumber) => (
-              <li
-                key={pageNumber}
-                className={currentPage === pageNumber ? "active" : ""}
-                onClick={() => handlePageChange(pageNumber)}
-              >
-                {pageNumber}
-              </li>
-            ))}
-            {endPage < totalPages && <li>...</li>}
-
-            {/* Next page button */}
-            <li
-              className={currentPage === totalPages ? "disabled" : ""}
-              onClick={() => handlePageChange(currentPage + 1)}
-            >
-              <img src={next} alt='next' />
-            </li>
-          </ul>
+    <div className="table__container">
+      <div className="table__main">
+        {/* Filter component */}
+        {showFilter && (
+          <Filter
+            data={data}
+            filter={filter}
+            handleFilterChange={handleFilterChange}
+            handleFilter={handleFilter}
+            handleReset={handleReset}
+          />
         )}
+
+        <table className="table">
+          {/* Table structure */}
+          <thead>
+            <tr>
+              <th>
+                <div
+                  className="flexspan table__header"
+                  onClick={() => setShowFilter(!showFilter)}
+                >
+                  <p className="table__header-text">Organization</p>
+                  <img
+                    className="table__header-icon"
+                    src={filterImage}
+                    alt="filter"
+                  />
+                </div>
+              </th>
+              <th>
+                <div
+                  className="flexspan table__header"
+                  onClick={() => setShowFilter(!showFilter)}
+                >
+                  <p className="table__header-text">Name</p>
+                  <img
+                    className="table__header-icon"
+                    src={filterImage}
+                    alt="filter"
+                  />
+                </div>
+              </th>
+              <th>
+                <div
+                  className="flexspan table__header"
+                  onClick={() => setShowFilter(!showFilter)}
+                >
+                  <p className="table__header-text">Email</p>
+                  <img
+                    className="table__header-icon"
+                    src={filterImage}
+                    alt="filter"
+                  />
+                </div>
+              </th>
+              <th>
+                <div
+                  className="flexspan table__header"
+                  onClick={() => setShowFilter(!showFilter)}
+                >
+                  <p className="table__header-text">Phone Number</p>
+                  <img
+                    className="table__header-icon"
+                    src={filterImage}
+                    alt="filter"
+                  />
+                </div>
+              </th>
+              <th>
+                <div
+                  className="flexspan table__header"
+                  onClick={() => setShowFilter(!showFilter)}
+                >
+                  <p className="table__header-text">Date Joined</p>
+                  <img
+                    className="table__header-icon"
+                    src={filterImage}
+                    alt="filter"
+                  />
+                </div>
+              </th>
+              <th>
+                <div
+                  className="flexspan table__header"
+                  onClick={() => setShowFilter(!showFilter)}
+                >
+                  <p className="table__header-text">Status</p>
+                  <img
+                    className="table__header-icon"
+                    src={filterImage}
+                    alt="filter"
+                  />
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentData.map((item: any, index) => (
+              <tr key={index} className="table__row">
+                <td>{item.orgName}</td>
+                <td>{item.profile.firstName + " " + item.profile.lastName}</td>
+                <td>{item.email}</td>
+                <td>{item.profile.phoneNumber}</td>
+                <td>
+                  {Intl.DateTimeFormat("en", {
+                    year: "numeric",
+                    day: "2-digit",
+                    month: "long",
+                  }).format(new Date(item.createdAt)) +
+                    " " +
+                    Intl.DateTimeFormat("en", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: true,
+                    }).format(new Date(item.createdAt))}
+                </td>
+                <td>{item?.education?.employmentStatus}</td>
+                <td>
+                  {
+                    <img
+                      src={more}
+                      alt="options"
+                      onClick={() => {
+                        setUserId(item?.id);
+                        setShowModal(!showModal);
+                      }}
+                    />
+                  }
+                </td>
+                {userId === item?.id ? <Modal id={userId} /> : null}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Pagination control */}
+        <div className="pagination">
+          <div className="pagination__showing">
+            <p>showing {lastIndex} of 100</p>
+          </div>
+
+          {filteredData.length > itemsPerPage && (
+            <ul className="pagination__page">
+              {/* Previous page button */}
+              <li
+                className={`pagination__page__item ${
+                  currentPage === 1 ? "disabled" : ""
+                }`}
+                onClick={() => handlePageChange(currentPage - 1)}
+              >
+                <img className="pagination__page__icon" src={prev} alt="prev" />
+              </li>
+
+              {/* Page numbers */}
+              {startPage > 1 && <li className="pagination__page__item">...</li>}
+              {pageNumbers.map((pageNumber) => (
+                <li
+                  key={pageNumber}
+                  className={`pagination__page__item ${
+                    currentPage === pageNumber ? "active__number" : ""
+                  }`}
+                  onClick={() => handlePageChange(pageNumber)}
+                >
+                  {pageNumber}
+                </li>
+              ))}
+              {endPage < totalPages && (
+                <li className="pagination__page-item">...</li>
+              )}
+
+              {/* Next page button */}
+              <li
+                className={`pagination__page-item ${
+                  currentPage === totalPages ? "disabled" : ""
+                }`}
+                onClick={() => handlePageChange(currentPage + 1)}
+              >
+                <img className="pagination__page-icon" src={next} alt="next" />
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );

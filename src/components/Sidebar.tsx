@@ -25,26 +25,27 @@ import "./styles/sidebar.scss";
 
 const Sidebar = () => {
   const [nav, setNav] = useState(false);
+
   return (
     <main>
-      <div className="toggle" onClick={() => setNav(!nav)}>
+      <div className="sidebar__toggle" onClick={() => setNav(!nav)}>
         <img src={dropdown} alt="toggle" />
       </div>
 
-      <aside className={`aside ${nav? 'aside-hidden' : 'aside-display'}`}>
-        <div className="switch">
-          <img src={dropdown} className="switch__child" alt="dropdown" />
-          <p className="switch__child">Switch Organization</p>
-          <img className="switch__child" src={dropdown} alt="dropdown" />
+      <aside className={`sidebar__aside ${nav ? "sidebar__aside__hidden" : "sidebar__aside__display"}`}>
+        <div className="sidebar__switch">
+          <img src={organization} className="sidebar__switch-child" alt="dropdown" />
+          <p className="sidebar__switch-child">Switch Organization</p>
+          <img className="sidebar__switch-child" src={dropdown} alt="dropdown" />
         </div>
 
-        <div className="dashboard">
+        <div className="sidebar__dashboard">
           <SideBarItem title="Dashboard" imgSrc={home} />
         </div>
 
-        <div className="category">
-          <p className="heading">CUSTOMERS</p>
-          <SideBarItem title="Users" imgSrc={users} className={true} />
+        <div className="sidebar__category">
+          <p className="sidebar__heading">CUSTOMERS</p>
+          <SideBarItem title="Users" imgSrc={users} className="sidebar__item__active" />
           <SideBarItem title="Guarantors" imgSrc={guarantors} />
           <SideBarItem title="Loans" imgSrc={loan} />
           <SideBarItem title="Decision models" imgSrc={decisionModel} />
@@ -54,8 +55,8 @@ const Sidebar = () => {
           <SideBarItem title="Karma" imgSrc={karma} />
         </div>
 
-        <div className="category">
-          <p className="heading">BUSINESSES</p>
+        <div className="sidebar__category">
+          <p className="sidebar__heading">BUSINESSES</p>
           <SideBarItem title="Organization" imgSrc={organization} />
           <SideBarItem title="Loan Products" imgSrc={loan} />
           <SideBarItem title="Saving Products" imgSrc={savingsProduct} />
@@ -67,8 +68,8 @@ const Sidebar = () => {
           <SideBarItem title="Reports" imgSrc={report} />
         </div>
 
-        <div className="category">
-          <p className="heading">SETTINGS</p>
+        <div className="sidebar__category">
+          <p className="sidebar__heading">SETTINGS</p>
           <SideBarItem title="Preferences" imgSrc={preferences} />
           <SideBarItem title="fees And Pricing" imgSrc={feesAndPricing} />
           <SideBarItem title="Audit Logs" imgSrc={audit} />
@@ -79,3 +80,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

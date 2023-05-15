@@ -1,12 +1,12 @@
 @import "./variables";
 
-.toggle {
+.sidebar__toggle {
   display: none;
   margin: 20px 30px;
   background-color: #ffffff;
 }
 
-.aside {
+.sidebar__aside {
   background: #ffffff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
   width: 283px;
@@ -14,27 +14,32 @@
   flex-direction: column;
   padding-left: 30px;
   padding-top: 40px;
-  .switch {
+
+  .sidebar__switch {
     display: flex;
+
     p {
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
       color: $tertiary-color;
     }
-    .switch__child {
+
+    .sidebar__switch-child {
       margin-right: 10px;
     }
-    .switch__child:last-child {
+
+    .sidebar__switch-child:last-child {
       margin-right: 0;
     }
   }
-  .dashboard {
+
+  .sidebar__dashboard {
     margin: 40px 0;
   }
 
-  .category {
-    .heading {
+  .sidebar__category {
+    .sidebar__heading {
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
@@ -43,19 +48,22 @@
     }
   }
 }
-// .aside-hidden {
-//   display: none;
-// }
-// .aside-display {
-//   display: inherit;
-// }
+
+.sidebar__aside__hidden {
+  display: none;
+}
+
+.sidebar__aside__display {
+  display: inherit;
+}
 
 @media screen and (max-width: 850px) {
-  .aside {
+  .sidebar__aside {
     position: absolute;
     z-index: 10;
   }
-  .toggle {
+
+  .sidebar__toggle {
     display: flex;
   }
 }

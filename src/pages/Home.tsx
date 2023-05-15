@@ -6,16 +6,19 @@ import '../components/styles/home.scss'
 
 const Home = () => {
   return (
-    <main className="home">
-      <Navbar />
-      <div className="home__details">
-        <Sidebar />
-        <div className="main">
-          <Cards />
-          <Table />
-        </div>
-      </div>
-    </main>
+<main className="home">
+  <div className="home__navbar">
+    <Navbar />
+  </div>
+  <div className="home__details">
+      <Sidebar />
+    <div className="home__main">
+        <Cards />
+        <Table />
+    </div>
+  </div>
+</main>
+
   );
 };
 
