@@ -1,4 +1,5 @@
 import React from "react";
+import './styles/info.scss'
 
 const Info = ({
   title1,
@@ -11,29 +12,29 @@ const Info = ({
   value4,
 }: any) => {
   return (
-    <div>
+    <div style={{display: 'flex', flexWrap:'wrap', alignItems:'center', gap:'60px'}}>
       <div>
-        <span>{title1}</span>
+        <p>{title1}</p>
         <span>{value1}</span>
       </div>
 
       {title2 && (
         <div>
-          <span>{title2}</span>
+          <p>{title2}</p>
           <span>{value2}</span>
         </div>
       )}
 
       {title3 && (
         <div>
-          <span>{title3}</span>
+          <p>{title3}</p>
           <span>{value3}</span>
         </div>
       )}
 
       {title4 && (
         <div>
-          <span>{title4}</span>
+          <p>{title4}</p>
           <span>{value4}</span>
         </div>
       )}

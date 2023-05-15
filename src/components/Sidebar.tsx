@@ -25,7 +25,6 @@ import "./styles/sidebar.scss";
 
 const Sidebar = () => {
   const [nav, setNav] = useState(false);
-  // const dynamicStyles: any = `{backgroundColor: ${nav ? "yellow" : ""}`;
   return (
     <main>
       <div className="toggle" onClick={() => setNav(!nav)}>

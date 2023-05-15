@@ -1,7 +1,7 @@
 @import "./variables";
 @import "./mixins";
 
-nav {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,11 +10,13 @@ nav {
   padding: 20px 0;
   padding-left: calc((65% / 16));
   padding-right: calc((65% / 16));
-  .logo {
+
+  &__logo {
     width: 144.8px;
     height: 30px;
   }
-  .search {
+
+  &__search {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,7 +24,8 @@ nav {
     border-radius: 8px;
     overflow: hidden;
     width: 300px;
-    max-width:100%;
+    max-width: 100%;
+
     input {
       font-size: 14px;
       font-weight: 400;
@@ -31,6 +34,7 @@ nav {
       border: none;
       outline-color: transparent;
     }
+
     button {
       @include reusable-button;
       width: 40px;
@@ -39,38 +43,43 @@ nav {
       border: none;
     }
   }
-  .user {
+
+  &__user {
     display: flex;
     justify-content: center;
     align-items: center;
+
     a {
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
       color: $tertiary-color;
     }
-    .user__child {
+
+    &__child {
       margin-right: 30px;
+
+      &:nth-child(3) {
+        margin-right: 10px;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
 
-    .user__child:nth-child(3) {
-      margin-right: 10px;
-    }
-
-    .user__child:last-child {
-      margin-right: 0;
-    }
-
-    .username {
+    &__username {
       display: flex;
       justify-content: center;
       align-items: center;
+
       p {
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
         color: $tertiary-color;
       }
+
       img {
         margin-left: 8px;
       }
@@ -78,17 +87,18 @@ nav {
   }
 }
 
-
 @media screen and (max-width: 850px) {
-    nav{
-        flex-direction: column;
-        padding: 10px 1rem;
-        width: 100vw;
-        .logo{
-            margin: 0;
-        }
-        .search{
-            margin: 20px 0;
-        }
+  .navbar {
+    flex-direction: column;
+    padding: 10px 1rem;
+    width: 100vw;
+
+    &__logo {
+      margin: 0;
     }
+
+    &__search {
+      margin: 20px 0;
+    }
+  }
 }

@@ -3,8 +3,16 @@ import Info from "./Info";
 
 const PersonalInfo = ({ data }: any) => {
   return (
-    <div>
-      <h1>Personal Information</h1>
+    <div style={{display:'flex', flexDirection: 'column', flexWrap:'wrap'}}>
+      <h1
+        style={{
+          fontWeight: "500",
+          fontSize: "16px",
+          color: "#213F7D",
+        }}
+      >
+        Personal Information
+      </h1>
       <Info
         title1="FULL NAME"
         title2="PHONE NUMBER"

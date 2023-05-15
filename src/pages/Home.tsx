@@ -6,7 +6,7 @@ import '../components/styles/home.scss'
 
 const Home = () => {
   return (
-    <main className="home" style={{ width: "100%", maxWidth: "100%" }}>
+    <main className="home">
       <Navbar />
       <div className="home__details">
         <Sidebar />

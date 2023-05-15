@@ -1,0 +1,60 @@
+// .main {
+//   padding: 30px;
+//   display: flex;
+//   align-items: center;
+//   flex-wrap: wrap;
+//   .picture {
+//     width: 100px;
+//     height: 100px;
+//     border-radius: 100%;
+//   }
+//   .user__info {
+//     margin: 0 25px;
+//     .name {
+//       font-weight: 500;
+//       font-size: 22px;
+//       line-height: 26px;
+//       color: #213f7d;
+//     }
+//     .number {
+//       font-style: normal;
+//       font-weight: 400;
+//       font-size: 14px;
+//       line-height: 16px;
+//       color: #545f7d;
+//     }
+//   }
+//   .tier {
+//     display: flex;
+//     flex-direction: column;
+//     margin: 0 30px;
+//     p {
+//       font-weight: 500;
+//       font-size: 14px;
+//       line-height: 16px;
+//       color: #545f7d;
+//     }
+//     .stars {
+//       display: flex;
+//       gap: 5px;
+//     }
+//   }
+//   .price {
+//     display: flex;
+//     flex-direction: column;
+//     margin: 0 30px;
+//     :nth-child(odd) {
+//       font-weight: 500;
+//       font-size: 22px;
+//       line-height: 26px;
+
+//       color: #213f7d;
+//     }
+//     :nth-child(even) {
+//       font-weight: 400;
+//       font-size: 12px;
+//       line-height: 14px;
+//       color: #213f7d;
+//     }
+//   }
+// }

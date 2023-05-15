@@ -1,15 +1,19 @@
 @import "./variables";
 
+.toggle {
+  display: none;
+  margin: 20px 30px;
+  background-color: #ffffff;
+}
+
 .aside {
   background: #ffffff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
   width: 283px;
+  display: flex;
+  flex-direction: column;
   padding-left: 30px;
   padding-top: 40px;
-  .toggle{
-    display: flex;
-    margin-left: 40px;
-  }
   .switch {
     display: flex;
     p {
@@ -39,19 +43,19 @@
     }
   }
 }
-.aside-hidden{
-    margin-left: 1000%;
-  } .aside-display{
-    margin-left: 0;
-  }
+// .aside-hidden {
+//   display: none;
+// }
+// .aside-display {
+//   display: inherit;
+// }
 
 @media screen and (max-width: 850px) {
-    .aside{
-        position: absolute;
-        width: 100%;
-        z-index: 10;
-    }
-    .toggle{
-        display:flex
-    }
+  .aside {
+    position: absolute;
+    z-index: 10;
+  }
+  .toggle {
+    display: flex;
+  }
 }

@@ -3,7 +3,7 @@ import Login from "../components/Login";
 
 const Auth = () => {
   return (
-    <div>
+    <div style={{maxWidth: '100%'}}>
       <Login />
     </div>
   );

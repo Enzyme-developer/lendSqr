@@ -1,13 +1,16 @@
-.home {
-  .home__details {
-    display: flex;
-  }
-  .main {
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-  }
-}
+// .home {
+//   width: 100%;
+//   .home__details {
+//     display: grid;
+//     grid-template-columns: 283px 1fr;
+//     .main {
+//       display: flex;
+//     }
+//   }
+// }
 
-@media screen and (max-width: 850px) {
-}
+// @media screen and (max-width: 850px) {
+//   .home__details {
+//     flex-direction: column;
+//   }
+// }

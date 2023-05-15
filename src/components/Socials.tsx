@@ -4,7 +4,15 @@ import Info from "./Info";
 const Socials = ({ socials }: socialProp) => {
   return (
     <div>
-      <h1>Socials</h1>
+      <h1
+        style={{
+          fontWeight: "500",
+          fontSize: "16px",
+          color: "#213F7D",
+        }}
+      >
+        Socials
+      </h1>
       <Info
         title1="TWITTER"
         title2="FACEBOOK"

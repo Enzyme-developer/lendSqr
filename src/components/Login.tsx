@@ -14,7 +14,7 @@ const Login: React.FC = ({ login }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogin = async (e: { preventDefault: () => void }) => {
     try {
@@ -23,7 +23,7 @@ const Login: React.FC = ({ login }: any) => {
       const signin = await signInWithEmailAndPassword(auth, email, password);
       console.log(signin);
       toast.success("Login successful");
-      navigate('/')
+      navigate("/");
       setLoading(false);
     } catch (error: any) {
       console.log(error);
@@ -35,33 +35,42 @@ const Login: React.FC = ({ login }: any) => {
   return (
     <div className="login">
       <div className="login__left">
-        <img className="logo" src={logo} alt="logo" />
-        <img className="illustration" src={illustration} alt="illustration" />
+        <img className="login__left__logo" src={logo} alt="logo" />
+        <img
+          className="login__left__illustration"
+          src={illustration}
+          alt="illustration"
+        />
       </div>
 
       <div className="login__right">
         <h1>Welcome!</h1>
-        <p>Enter details to login.</p>
+        <p className='login__right__enter'>Enter details to login.</p>
 
         <form onSubmit={handleLogin}>
           <input
             name="email"
             type="text"
-            className="email"
+            className="login__right__email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             aria-labelledby="email-label"
           />
-          <div className="group-input">
+          <div className="login__right__group-input">
             <input
               name="password"
               type={showPassword ? "text" : "password"}
-              className="password"
+              className="login__right__group-input__password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               aria-labelledby="password-label"
             />
-            <span onClick={() => setShowPassword(!showPassword)}>SHOW</span>
+            <p
+              className="login__right__group-input__show-text"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              SHOW
+            </p>
           </div>
 
           <div className="login__right__forgot">FORGOT PASSWORD ?</div>
