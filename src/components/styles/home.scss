@@ -1,26 +1,7 @@
-// .home {
-//   width: 100%;
-//   .home__details {
-//     display: grid;
-//     grid-template-columns: 283px 1fr;
-//     .main {
-//       display: flex;
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 850px) {
-//   .home__details {
-//     flex-direction: column;
-//   }
-// }
-
 .home {
   width: 100%;
 
   &__details {
-    display: grid;
-    grid-template-columns: 283px 1fr;
     display: flex;
     align-items: flex-start;
     overflow: auto;
