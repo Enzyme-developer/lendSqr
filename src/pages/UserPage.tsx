@@ -31,21 +31,21 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div className='user__page'>
+    <div className="user-page">
       <Navbar />
-      <div className="first__row">
+      <div className="user-page__first-row">
         <Sidebar />
-        <div className="main__column">
-          <div className="actions">
-            <Link to="/" className="back">
+        <div className="user-page__main-column">
+          <div className="user-page__actions">
+            <Link to="/" className="user-page__back">
               <img src={back} alt="back arrow" />
               <p>Back to users</p>
             </Link>
-            <div className="user__action">
+            <div className="user-page__user-action">
               <h3>User Details</h3>
               <div>
-                <button className="blacklist">BLACKLIST USER</button>
-                <button className="activate">ACTIVATE USER</button>
+                <button className="user-page__user-action__blacklist">BLACKLIST USER</button>
+                <button className="user-page__user-action__activate">ACTIVATE USER</button>
               </div>
             </div>
           </div>

@@ -1,16 +1,25 @@
-// p {
-//   font-weight: 400;
-//   font-size: 12px;
-//   line-height: 14px;
-//   text-transform: uppercase;
+.info {
+  display: flex;
+  flex-wrap: wrap;
 
-//   color: #545f7d;
-// }
-// span {
-//   font-weight: 500;
-//   font-size: 16px;
-//   line-height: 19px;
-//   margin-top: 8px;
+  .info__item {
+    margin: 30px 20px 30px 0;
+    width: fit-content;
+  }
 
-//   color: #545f7d;
-// }
+  .info__title {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #545f7d;
+  }
+
+  .info__value {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 10px;
+    color: #545f7d;
+  }
+}

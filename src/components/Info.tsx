@@ -12,30 +12,30 @@ const Info = ({
   value4,
 }: any) => {
   return (
-    <div style={{display: 'flex', flexWrap:'wrap', alignItems:'center', gap:'60px'}}>
-      <div>
-        <p>{title1}</p>
-        <span>{value1}</span>
+    <div className="info">
+      <div className="info__item">
+        <p className="info__title">{title1}</p>
+        <span className="info__value">{value1}</span>
       </div>
 
       {title2 && (
-        <div>
-          <p>{title2}</p>
-          <span>{value2}</span>
+        <div className="info__item">
+          <p className="info__title">{title2}</p>
+          <span className="info__value">{value2}</span>
         </div>
       )}
 
       {title3 && (
-        <div>
-          <p>{title3}</p>
-          <span>{value3}</span>
+        <div className="info__item">
+          <p className="info__title">{title3}</p>
+          <span className="info__value">{value3}</span>
         </div>
       )}
 
       {title4 && (
-        <div>
-          <p>{title4}</p>
-          <span>{value4}</span>
+        <div className="info__item">
+          <p className="info__title">{title4}</p>
+          <span className="info__value">{value4}</span>
         </div>
       )}
     </div>

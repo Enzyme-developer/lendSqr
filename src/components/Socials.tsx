@@ -9,6 +9,7 @@ const Socials = ({ socials }: socialProp) => {
           fontWeight: "500",
           fontSize: "16px",
           color: "#213F7D",
+          marginTop: '20px'
         }}
       >
         Socials
