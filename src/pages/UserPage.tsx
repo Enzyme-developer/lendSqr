@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Tabs from "../components/Tabs";
 import back from "../assets/back.svg";
-import "../components/styles/user.scss";
+import "../styles/user.scss";
 
 const UserPage = () => {
   const { id } = useParams();

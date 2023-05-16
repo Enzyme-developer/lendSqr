@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles/navbar.scss";
+import "../styles/navbar.scss";
 import logo from "../assets/logo.svg";
 import searchIcon from "../assets/searchIcon.svg";
 import bellIcon from "../assets/bellIcon.svg";

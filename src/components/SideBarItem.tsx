@@ -1,5 +1,5 @@
 import { sidebarItemProps } from "../types";
-import './styles/siderbarItem.scss';
+import '../styles/siderbarItem.scss';
 
 const SideBarItem = ({ imgSrc, title, className }: sidebarItemProps) => {
   return (

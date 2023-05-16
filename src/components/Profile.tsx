@@ -1,7 +1,7 @@
 import divider from "../assets/divider.svg";
 import star from "../assets/star.svg";
 import star2 from "../assets/star2.svg";
-import "./styles/profile.scss";
+import "../styles/profile.scss";
 
 const Profile = ({ data }: any) => {
   return (

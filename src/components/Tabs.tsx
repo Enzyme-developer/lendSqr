@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DummyTab from "./DummyTab";
 import GeneralDetails from "./GeneralDetails";
 import Profile from "./Profile";
-import './styles/tab.scss';
+import '../styles/tab.scss';
 
 const Tabs = ({ data }: any) => {
   const tabs = [

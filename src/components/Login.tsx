@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebaseConfig";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
-import "./styles/login.scss";
+import "../styles/login.scss";
 import logo from "../assets/logo.svg";
 import illustration from "../assets/illustration.svg";
 import { useNavigate } from "react-router-dom";

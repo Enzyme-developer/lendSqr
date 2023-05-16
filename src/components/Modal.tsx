@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import view from "../assets/view.svg";
 import blacklist from "../assets/blacklist.svg";
 import active from "../assets/active.svg";
-import "./styles/modal.scss";
+import "../styles/modal.scss";
 
 const Modal = ({ id }: any) => {
   return (

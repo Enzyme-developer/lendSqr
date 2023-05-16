@@ -4,7 +4,7 @@ import cardUsers from "../assets/cardUsers.svg";
 import cardActive from "../assets/cardActive.svg";
 import cardLoans from "../assets/cardLoans.svg";
 import cardSavings from "../assets/cardSavings.svg";
-import "./styles/cards.scss";
+import "../styles/cards.scss";
 
 const Cards = () => {
   return (

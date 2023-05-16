@@ -1,4 +1,4 @@
-import './styles/generalDetails.scss'
+import '../styles/generalDetails.scss'
 import Education from "./Education";
 import Guarantor from "./Guarantor";
 import PersonalInfo from "./PersonalInfo";

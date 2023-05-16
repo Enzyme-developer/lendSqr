@@ -1,5 +1,5 @@
 import React from "react";
-import './styles/info.scss'
+import '../styles/info.scss'
 
 const Info = ({
   title1,

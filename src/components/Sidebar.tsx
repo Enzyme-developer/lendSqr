@@ -21,7 +21,7 @@ import report from "../assets/report.svg";
 import preferences from "../assets/preferences.svg";
 import feesAndPricing from "../assets/feesAndPricing.svg";
 import audit from "../assets/audit.svg";
-import "./styles/sidebar.scss";
+import "../styles/sidebar.scss";
 
 const Sidebar = () => {
   const [nav, setNav] = useState(false);

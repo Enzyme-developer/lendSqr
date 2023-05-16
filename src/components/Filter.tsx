@@ -1,6 +1,6 @@
 import React from "react";
 import { filterProp } from "../types";
-import "./styles/filter.scss";
+import "../styles/filter.scss";
 
 const Filter = ({
   data,

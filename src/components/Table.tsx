@@ -7,7 +7,7 @@ import Modal from "./Modal";
 import filterImage from "../assets/filter.svg";
 import next from "../assets/next.svg";
 import prev from "../assets/prev.svg";
-import "./styles/table.scss";
+import "../styles/table.scss";
 
 const Table = ({filterBool} :any) => {
   const [data, setData] = useState([]);
