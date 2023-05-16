@@ -42,3 +42,25 @@ export type socialProp = {
     instagram?: string;
   };
 };
+
+export type filterProp = {
+  filter: {
+    date: string | number | readonly string[] | undefined;
+    organization: string;
+    phoneNumber: string;
+    email: string;
+    username: string;
+    Date: string;
+    status: string;
+}
+  handleFilterChange: (e: {
+    target: {
+        name: string;
+        value: string;
+    };
+  }) => void;
+  handleFilter: () => void;
+  handleReset: () => void;
+  data: never[];
+
+};

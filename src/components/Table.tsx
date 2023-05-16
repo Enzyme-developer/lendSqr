@@ -9,7 +9,7 @@ import next from "../assets/next.svg";
 import prev from "../assets/prev.svg";
 import "./styles/table.scss";
 
-const Table = () => {
+const Table = ({filterBool} :any) => {
   const [data, setData] = useState([]);
   const [userId, setUserId] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -22,6 +22,7 @@ const Table = () => {
     email: "",
     username: "",
     Date: "",
+    date: "",
     status: "",
   });
   const itemsPerPage = 10;
@@ -118,7 +119,7 @@ const Table = () => {
     <div className="table__container">
       <div className="table__main">
         {/* Filter component */}
-        {showFilter && (
+        {filterBool && showFilter && (
           <Filter
             data={data}
             filter={filter}

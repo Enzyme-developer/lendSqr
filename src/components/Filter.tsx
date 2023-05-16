@@ -1,4 +1,5 @@
 import React from "react";
+import { filterProp } from "../types";
 import "./styles/filter.scss";
 
 const Filter = ({
@@ -7,7 +8,7 @@ const Filter = ({
   handleReset,
   handleFilter,
   handleFilterChange,
-}: any) => {
+}: filterProp) => {
   return (
     <div className="filter">
       <p className="filter__label">Organization</p>

@@ -9,7 +9,7 @@ import "../components/styles/user.scss";
 
 const UserPage = () => {
   const { id } = useParams();
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -17,7 +17,8 @@ const UserPage = () => {
         `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`
       );
       const jsonData = await response.json();
-      setData(jsonData);
+      // setData(jsonData);
+      localStorage.setItem('userData', JSON.stringify(jsonData))
       console.log(jsonData);
     } catch (error) {
       console.error("Error:", error);
@@ -29,6 +30,8 @@ const UserPage = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const data = JSON.parse(localStorage.getItem('userData') || '{}')
 
   return (
     <div className="user-page">

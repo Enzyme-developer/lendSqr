@@ -1,0 +1,20 @@
+.dashboard {
+    width: 100%;
+  
+    &__details {
+      display: flex;
+      align-items: flex-start;
+      overflow: auto;
+  
+      @media screen and (max-width: 850px) {
+        display: unset;
+      }
+    }
+  
+    &__main {
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+  }
+  
